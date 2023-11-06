@@ -6,8 +6,9 @@ module.exports = () => {
   return {
     output: {
       path: path.resolve(__dirname, "../dist"),
-      publicPath: "/",
-      filename: "[name].[contenthash].bundle.js",
+      publicPath: "/wp-content/plugins/wp-bos/dist/",
+      // filename: "[name].[contenthash].bundle.js",
+      filename: "[name].bundle.js",
     },
     devtool: false,
     module: {
