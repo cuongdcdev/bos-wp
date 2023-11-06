@@ -34,5 +34,7 @@ const MainnetWidgets = {
   starButton: "mob.near/widget/N.StarButton",
 };
 
-export const Widgets =
-  NetworkId === "testnet" ? TestnetWidgets : MainnetWidgets;
+// export const Widgets =
+//   NetworkId === "testnet" ? TestnetWidgets : MainnetWidgets;
+
+  export const Widgets = {};

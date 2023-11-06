@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "version": "0.18.2",
+  "name": "bos-wp-connector",
+  "version": "0.0.1",
   "homepage": "/",
   "private": true,
   "dependencies": {
@@ -43,7 +43,7 @@
     "serve": "webpack serve",
     "webpack": "webpack",
     "dev": "yarn run serve -- --env mode=development",
-    "prod": "yarn run webpack -- --env mode=production",
+    "prod": "yarn run webpack -- --env mode=production ",
     "prod:analyze": "yarn run prod -- --env presets=analyze",
     "build": "yarn run prod",
     "start": "yarn run dev"

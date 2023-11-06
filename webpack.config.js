@@ -17,8 +17,9 @@ module.exports = function (env) {
       entry: `${paths.srcPath}/index.js`,
       output: {
         path: paths.distPath,
-        filename: "[name].bundle.js",
+        filename: "[name].[hash:0].js?id=[contenthash]",
         publicPath: "/",
+        clean: true
       },
       module: {
         rules: [
@@ -72,7 +73,7 @@ module.exports = function (env) {
               from: paths.publicPath,
               to: "./",
               globOptions: {
-                ignore: ["**/*.DS_Store", "**/index.html", "**/favicon.png"],
+                ignore: ["**/*.DS_Store", "**/index.html"],
               },
               noErrorOnMissing: true,
             },
@@ -80,7 +81,6 @@ module.exports = function (env) {
         }),
         new HTMLWebpackPlugin({
           template: `${paths.publicPath}/index.html`,
-          favicon: `${paths.publicPath}/favicon.png`,
           publicPath: "/",
         }),
         new webpack.ProgressPlugin(),

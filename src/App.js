@@ -7,8 +7,6 @@ import "react-bootstrap-typeahead/css/Typeahead.bs5.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "App.scss";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import EditorPage from "./pages/EditorPage";
-import ViewPage from "./pages/ViewPage";
 import { setupWalletSelector } from "@near-wallet-selector/core";
 import { setupNearWallet } from "@near-wallet-selector/near-wallet";
 import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
@@ -18,7 +16,7 @@ import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
 import { setupNeth } from "@near-wallet-selector/neth";
 import { setupNightly } from "@near-wallet-selector/nightly";
 import { setupModal } from "@near-wallet-selector/modal-ui";
-import EmbedPage from "./pages/EmbedPage";
+import ViewPage from "./pages/ViewPage";
 import { sanitizeUrl } from "@braintree/sanitize-url";
 import {
   useAccount,
@@ -26,12 +24,14 @@ import {
   useNear,
   utils,
   EthersProviderContext,
+  Widget
 } from "near-social-vm";
 import Big from "big.js";
-import { NavigationWrapper } from "./components/navigation/NavigationWrapper";
 import { NetworkId, Widgets } from "./data/widgets";
 import { useEthersProviderContext } from "./data/web3";
-import SignInPage from "./pages/SignInPage";
+// import SignInPage from "./pages/SignInPage";
+import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
+// import { Button } from "bootstrap/dist/js/bootstrap.bundle";
 
 export const refreshAllowanceObj = {};
 const documentationHref = "https://social.near-docs.io/";
@@ -161,27 +161,21 @@ function App(props) {
   };
 
   return (
-    <div className="App">
+    <div className="bos-app">
       <EthersProviderContext.Provider value={ethersProviderContext}>
-        <Router basename={process.env.PUBLIC_URL}>
+        <HashRouter basename={process.env.PUBLIC_URL}>
           <Switch>
-            <Route path={"/signin"}>
-              <NavigationWrapper {...passProps} />
-              <SignInPage {...passProps} />
-            </Route>
-            <Route path={"/embed/:widgetSrc*"}>
-              <EmbedPage {...passProps} />
-            </Route>
-            <Route path={"/edit/:widgetSrc*"}>
-              <NavigationWrapper {...passProps} />
-              <EditorPage {...passProps} />
-            </Route>
             <Route path={"/:widgetSrc*"}>
-              <NavigationWrapper {...passProps} />
+              
+              <button onClick={ () => requestSignIn() }> Request signin </button>
+
               <ViewPage {...passProps} />
+              <Widget src="mintbase.near/widget/nft-marketplace" />
             </Route>
           </Switch>
-        </Router>
+        </HashRouter>
+
+
       </EthersProviderContext.Provider>
     </div>
   );

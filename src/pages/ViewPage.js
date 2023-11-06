@@ -5,6 +5,9 @@ import { useQuery } from "../hooks/useQuery";
 import { useHashRouterLegacy } from "../hooks/useHashRouterLegacy";
 
 export default function ViewPage(props) {
+  console.log("passed props: " , props);
+  window.NSObject =  props;
+  
   useHashRouterLegacy();
 
   const { widgetSrc } = useParams();
@@ -15,7 +18,7 @@ export default function ViewPage(props) {
     window?.InjectedConfig?.forcedWidget ||
     widgetSrc ||
     window?.InjectedConfig?.defaultWidget ||
-    props.widgets.default;
+    false;
   const showMenu = !window?.InjectedConfig?.hideMenu;
   const setWidgetSrc = props.setWidgetSrc;
   const viewSourceWidget = props.widgets.viewSource;
@@ -47,21 +50,27 @@ export default function ViewPage(props) {
     }, 1);
   }, [src, query, setWidgetSrc, viewSourceWidget]);
 
-  return showMenu ? (
-    <div className="container-xl">
-      <div className="row">
-        <div
-          className="position-relative"
-          style={{
-            "--body-top-padding": "24px",
-            paddingTop: "var(--body-top-padding)",
-          }}
-        >
-          <Widget key={src} src={src} props={widgetProps} />
-        </div>
-      </div>
-    </div>
-  ) : (
-    <Widget key={src} src={src} props={widgetProps} />
-  );
+  // return showMenu ? (
+  //   <div className="container-xl">
+  //     <div className="row">
+  //       <div
+  //         className="position-relative"
+  //         style={{
+  //           "--body-top-padding": "24px",
+  //           paddingTop: "var(--body-top-padding)",
+  //         }}
+  //       >
+  //         <Widget key={src} src={src} props={widgetProps} />
+  //       </div>
+  //     </div>
+  //   </div>
+  // ) : (
+  //   {src ? <Widget key={src} src={src} props={widgetProps} : ""} />
+  // );
+
+
+  return src ?  <Widget key={src} src={src} props={widgetProps} /> : <></>;
+
+
+
 }
