@@ -36,7 +36,7 @@ import { HashRouter } from "react-router-dom/cjs/react-router-dom.min";
 export const refreshAllowanceObj = {};
 const documentationHref = "https://social.near-docs.io/";
 
-function App(props) {
+function App(data) {
   const [connected, setConnected] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
   const [signedAccountId, setSignedAccountId] = useState(null);
@@ -160,17 +160,24 @@ function App(props) {
     documentationHref,
   };
 
+  
+
+  let componentConfig = Object.assign(passProps, {
+    defaultWidget: data.src,
+    props: data?.props ? JSON.parse(JSON.stringify(data.props)) : {}
+  });
+  console.log("finding .bos-wp-placeholder to render BOS components with component config: ", componentConfig);
+  window.NSObject =  passProps;
+  
+  
   return (
     <div className="bos-app">
       <EthersProviderContext.Provider value={ethersProviderContext}>
         <HashRouter basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route path={"/:widgetSrc*"}>
-              
-              <button onClick={ () => requestSignIn() }> Request signin </button>
-
-              <ViewPage {...passProps} />
-              <Widget src="mintbase.near/widget/nft-marketplace" />
+              <ViewPage {...componentConfig} />
+              {/* <Widget src="mintbase.near/widget/nft-marketplace" /> */}
             </Route>
           </Switch>
         </HashRouter>

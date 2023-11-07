@@ -58,10 +58,13 @@ class WP_BOS
     }
 
     function add_shortcodes(){
-        add_shortcode("bos-wp", function($attrs){
+        add_shortcode("bos-wp", function($attrs,$tags){
+            // var_dump($attrs); die;
             ob_start(); 
             ?>
-                <div class="bos-wp-placeholder" data-attrs="<?= htmlentities(json_encode($attrs)) ?>"></div>
+                <div class="bos-wp-placeholder" 
+                data-src="<?= htmlentities($attrs["src"])?>" 
+                data-props="<?= htmlentities( json_encode(json_decode($attrs["props"])))?>" ></div>
             <?php 
             return ob_get_clean();
         });
