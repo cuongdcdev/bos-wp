@@ -12,3 +12,25 @@ add_shortcode("bos-wp", function ($attrs, $tags) {
     <?php
     return ob_get_clean();
 });
+
+
+add_shortcode("bos-wp-login", function ($attrs, $tags) {
+    ob_start();
+    ?>
+    <div class="bos-wp-btn-login-logout btn btn-primary" id="bos-wp-btn-login" >
+        <?= !$attrs["label"] ? "Login" : $attrs["label"] ?>
+    </div>
+    <?php
+    return ob_get_clean();
+});
+
+add_shortcode("bos-wp-logout", function ($attrs, $tags) {
+    ob_start();
+    ?>
+    <div class="bos-wp-btn-login-logout btn btn-danger" id="bos-wp-btn-logout">
+        <?= $attrs["label"] ? $attrs["label"] : "Logout" ?>
+    </div>
+    <?php
+    return ob_get_clean();
+});
+

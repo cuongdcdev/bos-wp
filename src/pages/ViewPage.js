@@ -36,7 +36,4 @@ export default function ViewPage(props) {
 
   console.log("ViewPage: src: " + src + "| widget props:", widgetProps)
   return src ? <Widget key={Math.random()} src={src} props={widgetProps} /> : <></>;
-
-
-
 }

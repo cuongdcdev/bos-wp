@@ -2,7 +2,6 @@
 (function (blocks, element, components) {
     var el = element.createElement;
     var registerBlockType = blocks.registerBlockType;
-    var Fragment = element.Fragment;
 
     registerBlockType('bos-wp-plugin/bos-wp', {
         title: 'NEAR BOS WP',
@@ -68,8 +67,7 @@
                 },
                 el('h3' , {
                     class: 'bos-wp-widget-heading',
-                    text : 'BOS WP',
-                }),
+                },'NEAR #BOS <> WordPress'),
                 el('input', {
                     type: 'text',
                     class: 'bos-wp-widget-source',

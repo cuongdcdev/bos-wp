@@ -41,14 +41,14 @@ add_action('init', 'bos_wpregister_block');
 
 // Block rendering callback
 function bos_wprender_callback($attrs){
+
+    if(!isset($attrs['src'])) return;
+    
     $propsObject = [];
     
-    if(sizeof($attrs["props"]) > 0 ) foreach ($attrs["props"] as $v) {
+    if(isset($attrs["props"]) &&  sizeof($attrs["props"]) > 0 ) foreach ($attrs["props"] as $v) {
         if( isset( $v['key'] ) && isset( $v['value'] ) ) $propsObject[ $v['key'] ] = $v['value'];
     }
-
-    // var_dump($propsObject); die;
-    
     
     ob_start();
     ?>

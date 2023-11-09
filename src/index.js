@@ -13,7 +13,7 @@ divsToUpdate.forEach(div => {
         src: src
     };
 
-    console.log("[index.js] component config: " , data);
+    // console.log("[index.js] component config: " , data);
     createRoot(div).render(<App  {...data} />, div)
     div.classList.remove("bos-wp-placeholder");
 });

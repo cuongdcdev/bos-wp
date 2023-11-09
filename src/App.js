@@ -23,9 +23,7 @@ import {
   useInitNear,
   useNear,
   utils,
-  EthersProviderContext,
-  Widget
-} from "near-social-vm";
+  EthersProviderContext} from "near-social-vm";
 import Big from "big.js";
 import { NetworkId, Widgets } from "./data/widgets";
 import { useEthersProviderContext } from "./data/web3";
@@ -177,7 +175,6 @@ function App(data) {
           <Switch>
             <Route path={"/:widgetSrc*"}>
               <ViewPage {...componentConfig} />
-              {/* <Widget src="mintbase.near/widget/nft-marketplace" /> */}
             </Route>
           </Switch>
         </HashRouter>
