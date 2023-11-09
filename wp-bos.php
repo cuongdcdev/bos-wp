@@ -2,10 +2,10 @@
 
 /*
   Plugin Name: WP-BOS connector
-  Description: Make #NEAR #BOS greater by ability to embed to the most popular open source CMS in the world!! Powered by Web3! #BuiltOnNEAR
+  Description: Make NEAR BOS even greater by enabling the ability to embed it into WordPress, the most popular open-source web2 CMS in the world! Powered by Web3! #BuiltOnNEAR
   Author URI: https://cuongdcdev.near.social
   Author: Kent
-  Version: 0.0.1
+  Version: 0.0.2
 */
 
 if (!defined('ABSPATH'))
